@@ -1,0 +1,36 @@
+ori.levine, aaa997
+Ori Levine (208533414), Achikam Levy (208764944)
+EX: 2
+
+FILES: uthreads.cpp Thread.h Thread.cpp
+
+REMARKS:
+
+ANSWERS:
+Part 1:
+1.
+    a. sigsetjmp saves the current state of the thread \ program and returns a value that can be used later by
+       siglongjmp to continue the execution of the program \ thread from the same point.
+
+    b. sigsetjmp and siglongjmp can mask or unmask  signals, meaning they determine whether signals that erupt while
+    the program is running will be handled or be blocked until the current thread will finish its execution;
+
+2. we want to use User-level threads when multiple tasks need to be performed simultaneously within a single
+process, such as in a web server there we have multiple requests in the same time. User-level threads are a
+reasonable choice in our exercise because they can be managed by the application and don't use the operation system
+resources, so they can do context switching faster and with lower overhead.
+
+3. Advantages - more secure, because the processes are less connected. also they can be less affected from each other,
+which mean that if one tab crash it doesn't affect other tabs.
+ Disadvantages - worse performances, because of the overhead of the different processes. The synchronization between
+ the tabs is more complex;
+
+4. - typing the keyboard sends a hardware interrupt to the operation system. the os send it to the process to execute
+the command typed. the command "kill <pid>" sends SIGTERM (terminate signal) to the program with this pid. The os, by
+ its signals handler, terminate the process.
+
+
+5. real time is the actual time that passed through the whole process. Virtual time is the time in specific thread
+ was executed, without all the overhead like context switches.
+ for example - we use real time to measure the time for user respond, like clicking on a button.
+ we will use virtual time to measure huw much time it takes to process make a complex mathematical task.
